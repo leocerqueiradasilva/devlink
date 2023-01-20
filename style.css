@@ -1,0 +1,188 @@
+/*
+#id { ** Peso 100 }
+.class { ** Peso 10 }
+element { ** Peso 1 }
+*/
+
+* { /*reset de css - zerando todas a margens do navegador */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* para manter o width do container */
+}
+
+:root {
+    --text-color: white;
+    --bg-url: url(./assets/bg-mobile.jpg);
+    --stroke-color: rgba(255, 255, 255, 0.5);
+    --surface-color: rgba(255, 255, 255, 0.05);
+    --surface-solor-hover: rgba(0, 0, 0, 0.02);
+    --highlight-color: rgba(255, 255, 255, 0.2);
+    --switch-bg: url(./assets/moon-stars.svg);
+}
+
+.light {
+    --text-color: black;
+    --bg-url: url(./assets/bg-mobile-light.jpg);
+    --stroke-color: rgba(0, 0, 0, 0.5);
+    --surface-color: rgba(0, 0, 0, 0.05);
+    --surface-solor-hover: rgba(0, 0, 0, 0.02);
+    --highlight-color: rgba(0, 0, 0, 0.1);
+    --switch-bg: url(./assets/sun.svg);
+}
+
+body {
+    /*
+    background-image: url(./assets/bg-mobile.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    */
+
+    /*background: color image repeat position/size */
+    background: var(--bg-url) no-repeat top center/cover;
+
+}
+
+body * {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+}
+
+#container {
+    width: 360px;
+    /* border: 1px solid red;     habilitar somente para ter uma noção de como vai ficar as marcações de borda */ 
+    margin: 56px auto 0px;
+    padding: 0 24px;
+}
+
+#profile { /* propriedade pai */
+    text-align: center;
+    padding: 24px;
+}
+
+#profile img { /* acessando a propriedade filho img */
+    width: 112px;
+    border-radius: 9999px;
+}
+
+#profile p {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 8px;
+}
+
+/* Switch */
+#switch {
+    position: relative;
+    width: 64px;
+
+    margin: 4px auto; /* alinhamento de display-block */
+}
+
+#switch button {
+    width: 32px;
+    height: 32px;
+    background: white var(--switch-bg) no-repeat center;
+    border: 0;
+    border-radius: 50%;
+
+    position: absolute; /* Faz uma sobreposição de camadas e libera o z-index */
+    top: 50%;
+    left: 0;
+    z-index: 1; /* muda o andar de componente button com o span */
+    transform: translateY(-50%);
+}
+
+.light #switch button {
+    right: 0;
+    left: initial;
+}
+
+#switch span {
+    display: block;
+    width: 64px;
+    height: 24px;
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 9999px;
+}
+
+
+
+
+/* Links - lista de botoões */
+ul {
+    list-style: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 24px 0; /* espaço do botão até o final */
+}
+
+ul li a {
+    /* border: 1px solid red; */
+
+    display: flex; /* se adapta horizontalmente */ 
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px 24px;
+
+    background: var(--surface-color);
+    border: 1px solid var(--stroke-color);
+    border-radius: 8px; /* bordar arredondada */
+    
+    backdrop-filter: blur(4px); /* embassado no botão */
+    -webkit-backdrop-filter: blur(4px); /* embassado no botão - linha ajuste para o safari */
+
+    text-decoration: none; /* retirar a linha debaixo do link do botao */
+    font-weight: 500;
+
+    transition: background 0.3s;
+
+}
+
+ul li a:hover {
+    background:var(--surface-solor-hover);
+    border: 1.5px solid var(--text-color);
+}
+
+/*  social links */
+#social-links {
+    display: flex;
+    justify-content: center;
+
+    padding: 8px 0;
+
+    font-size: 24px;
+}
+
+#social-links a { /* alinhamento da bolinha em volta de cada icone social */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+
+    transition: background 0.2s;
+    border-radius: 50%;
+}
+
+#social-links a:hover { /*  */
+    background: var(--highlight-color);
+}
+
+footer {
+    padding: 8px 0;
+    text-align: center;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+footer a {
+    text-decoration: none;
+}
