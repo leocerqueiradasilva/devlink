@@ -21,7 +21,9 @@ element { ** Peso 1 }
 
 
     /* whatsapp icon start inicio */
-    --icon-color:#fff;--icon-hover:#fff;--background-color:#00c800;--background-hover:#009600}.icon{width:48px;height:48px;transform:scale(0.6) translate(20%,20%);fill:var(--icon-color)}.float{position:fixed;cursor:pointer;width:60px;height:60px;bottom:40px;right:40px;transition:1s;background-color:var(--background-color);border-radius:50px;animation:pulse 3s infinite;-webkit-animation:pulse 3s infinite;-moz-animation:pulse 3s infinite;-o-animation:pulse 3s infinite;z-index:9000}.float:hover{background-color:var(--background-hover)}.float:hover .icon{fill:var(--icon-hover)}@-webkit-keyframes pulse{0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}}@-o-keyframes pulse{0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}}@-ms-keyframes pulse{0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}}@-moz-keyframes pulse{0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}}@keyframes pulse{0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}
+    --icon-color:#fff;--icon-hover:#fff;--background-color:#00c800;--background-hover:#009600}.icon{width:48px;height:48px;transform:scale(0.6) translate(20%,20%);fill:var(--icon-color)}.float{position:fixed;cursor:pointer;width:60px;height:60px;bottom:40px;right:40px;transition:1s;background-color:var(--background-color);border-radius:50px;
+    animation:pulse 3s infinite;-webkit-animation:pulse 3s infinite;-moz-animation:pulse 3s infinite;-o-animation:pulse 3s infinite;z-index:9000}.float:hover{background-color:var(--background-hover)}.float:hover .icon{fill:var(--icon-hover)}
+    @-webkit-keyframes pulse{0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}}@-o-keyframes pulse{0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}}@-ms-keyframes pulse{0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}}@-moz-keyframes pulse{0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}}@keyframes pulse{0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}
     /* whatsapp icon finish fim */
 }
 
@@ -101,11 +103,25 @@ body * {
     left: 0;
     z-index: 1; /* muda o andar de componente button com o span */
     transform: translateY(-50%);
+
+    animation: slide-back 0.2s; /* sem forwards pois o left na linha 101 ja esta definido como zero */
+
+
+    animation:pulse 3s infinite;
+    -webkit-animation:pulse 3s infinite;
+    -moz-animation:pulse 3s infinite;
+    -o-animation:pulse 3s infinite;
+    z-index:9000
 }
 
 .light #switch button {
-    right: 0;
-    left: initial;
+    /* right: 0;
+    left: initial; */
+    animation: slide-in 0.2s forwards; /* forwards executa a animação e para no fim sem retornar ao valo inicial */
+}
+
+#switch button:hover {
+    outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -196,7 +212,7 @@ footer a {
     text-decoration: none;
 }
 
-/* media queries */
+/* media queries - configura as imagens do background de acordo com a resolução */
 @media (min-width: 700px) {
     :root {
         --bg-url: url(./assets/bg-desktop.jpg);
@@ -207,3 +223,49 @@ footer a {
     }
 }
 
+/* animações keyframes para movimentar o botão slider */
+@keyframes slide-in {
+    from {
+        left: 0;
+    }
+    to {
+        left: 55%;
+    }
+}
+
+@keyframes slide-back {
+    from {
+        left: 55%;
+    }
+    to {
+        left: 0;
+    }
+}
+
+/* Exemplo Pulse 
+@-webkit-keyframes pulse{ 
+    0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}
+    70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}
+    100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}
+}
+@-o-keyframes pulse{
+    0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}
+    70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}
+    100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}
+}
+@-ms-keyframes pulse{
+    0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}
+    70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}
+    100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}
+}
+@-moz-keyframes pulse{
+    0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}
+    70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}
+    100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}
+}
+@keyframes pulse{
+    0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}
+    70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}
+    100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}
+}
+*/
