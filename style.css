@@ -19,7 +19,7 @@ element { ** Peso 1 }
     --highlight-color: rgba(255, 255, 255, 0.2);
     --switch-bg: url(./assets/moon-stars.svg);
 
-    
+
     /* whatsapp icon start inicio */
     --icon-color:#fff;--icon-hover:#fff;--background-color:#00c800;--background-hover:#009600}.icon{width:48px;height:48px;transform:scale(0.6) translate(20%,20%);fill:var(--icon-color)}.float{position:fixed;cursor:pointer;width:60px;height:60px;bottom:40px;right:40px;transition:1s;background-color:var(--background-color);border-radius:50px;animation:pulse 3s infinite;-webkit-animation:pulse 3s infinite;-moz-animation:pulse 3s infinite;-o-animation:pulse 3s infinite;z-index:9000}.float:hover{background-color:var(--background-hover)}.float:hover .icon{fill:var(--icon-hover)}@-webkit-keyframes pulse{0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}}@-o-keyframes pulse{0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}}@-ms-keyframes pulse{0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}}@-moz-keyframes pulse{0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}}@keyframes pulse{0%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,1)}70%{-webkit-box-shadow:0 0 0 20px rgba(0,200,0,0)}100%{-webkit-box-shadow:0 0 0 0 rgba(0,200,0,0)}
     /* whatsapp icon finish fim */
@@ -47,7 +47,8 @@ body {
 
     /*background: color image repeat position/size */
     background: var(--bg-url) no-repeat top center/cover;
-
+    /* alterando o viewport para completar a pagina na vertical */
+    height: 100vh;
 }
 
 body * {
@@ -56,7 +57,8 @@ body * {
 }
 
 #container {
-    width: 360px;
+    width: 100%;
+    max-width: 400px;
     /* border: 1px solid red;     habilitar somente para ter uma noção de como vai ficar as marcações de borda */ 
     margin: 56px auto 0px;
     padding: 0 24px;
@@ -192,5 +194,16 @@ footer {
 
 footer a {
     text-decoration: none;
+}
+
+/* media queries */
+@media (min-width: 700px) {
+    :root {
+        --bg-url: url(./assets/bg-desktop.jpg);
+    }
+
+    .light {
+        --bg-url: url(./assets/bg-desktop-light.jpg);
+    }
 }
 
